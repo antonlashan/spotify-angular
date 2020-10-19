@@ -43,6 +43,6 @@
     }
   },
   "lint-staged": {
-    "*.{ts,js,scss,md}": "prettier --write"
+    "*.{ts,js,scss,md,html}": "prettier --write"
   }
 }
