@@ -1,1 +1,17 @@
-<p>search-result works!</p>
+<div
+  class="d-flex flex-wrap justify-content-center"
+  *ngIf="artists$ | async as artists"
+>
+  <div class="card m-1" *ngFor="let artist of artists">
+    <div class="d-flex flex-grow-1">
+      <a href="#" class="list-group-item list-group-item-action">
+        <p class="font-weight-bolder m-0">{{ artist.name }}</p>
+        <span
+          *ngFor="let genre of artist.genres"
+          class="text-info mr-1 small"
+          >{{ genre }}</span
+        >
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { Artist } from 'src/app/states/spotify/spotify.models';
+
+import { ArtistsSearchState } from '../../../states/spotify/artists-search.state';
 
 @Component({
   selector: 'app-search-result',
@@ -6,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-result.component.scss'],
 })
 export class SearchResultComponent implements OnInit {
-  constructor() {}
+  @Select(ArtistsSearchState.getArtists) artists$: Observable<Artist[]>;
 
   ngOnInit(): void {}
 }

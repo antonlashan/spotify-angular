@@ -1,4 +1,5 @@
 import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Store } from '@ngxs/store';
 import { fromEvent } from 'rxjs';
 import {
   filter,
@@ -6,7 +7,7 @@ import {
   distinctUntilChanged,
   tap,
 } from 'rxjs/operators';
-import { SpotifyService } from 'src/app/services/spotify.service';
+import { SearchArtists } from 'src/app/states/spotify/spotify.actions';
 
 @Component({
   selector: 'app-search',
@@ -16,7 +17,7 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 export class SearchComponent implements AfterViewInit {
   @ViewChild('search') input: ElementRef;
 
-  constructor(private spotifyService: SpotifyService) {}
+  constructor(private store: Store) {}
 
   ngAfterViewInit() {
     fromEvent(this.input.nativeElement, 'keyup')
@@ -24,13 +25,10 @@ export class SearchComponent implements AfterViewInit {
         filter(Boolean),
         debounceTime(500),
         distinctUntilChanged(),
-        tap((text) => {
-          console.log(this.input.nativeElement.value);
-          this.spotifyService
-            .searchArtists(this.input.nativeElement.value)
-            .subscribe((data) => {
-              console.log(data);
-            });
+        tap(() => {
+          this.store.dispatch(
+            new SearchArtists(this.input.nativeElement.value)
+          );
         })
       )
       .subscribe();
