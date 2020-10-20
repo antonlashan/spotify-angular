@@ -2,7 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+import { IEnvironment } from './interface';
+
+export const environment: IEnvironment = {
+  spotifyAuthUrl: 'https://accounts.spotify.com/api/token',
+  spotifyAuthToken:
+    'Basic MGNlN2U3Yzg1NTM3NGM1M2E0NDRlMjAwMDJhYjhmM2I6MDIyMzA2ZTcwMWViNDViYjhmYzllOTgyMTc2NDZlYjY=',
+  spotifyBaseUrl: 'http://localhost:4200/proxy',
   production: false,
 };
 
