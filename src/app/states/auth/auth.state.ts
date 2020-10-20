@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Action, NgxsOnInit, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
 
-import { AuthService, IToken } from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Authenticate } from './auth.actions';
+import { IToken } from './auth.model';
 
 export class AuthStateModel {
   token: IToken;

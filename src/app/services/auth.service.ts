@@ -1,17 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpBackend, HttpClient } from '@angular/common/http';
-
-import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
-export const S_ACCESS_TOKEN = 'auth.token.access_token';
+import { environment } from '../../environments/environment';
+import { IToken } from '../states/auth/auth.model';
 
-export interface IToken {
-  access_token: string;
-  expires_in: number;
-  scope: string;
-  token_type: string;
-}
+export const S_ACCESS_TOKEN = 'auth.token.access_token';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +21,7 @@ export class AuthService {
   constructor(private http: AuthHttpClient) {}
 
   get accessToken(): string {
-    return localStorage.getItem(S_ACCESS_TOKEN);
+    return JSON.parse(localStorage.getItem(S_ACCESS_TOKEN));
   }
 
   authorize(): Observable<IToken> {
