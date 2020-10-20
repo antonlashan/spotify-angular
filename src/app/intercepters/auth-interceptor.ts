@@ -13,8 +13,6 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private auth: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    // this.auth.checkAuthorized();
-
     // Clone the request and replace the original headers with
     // cloned headers, updated with the authorization.
     const authReq = req.clone({
