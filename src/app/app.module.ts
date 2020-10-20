@@ -11,7 +11,6 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutsModule } from './layouts/layouts.module';
-import { HomeModule } from './modules/home/home.module';
 import { AuthInterceptor } from './intercepters/auth-interceptor';
 import { environment } from '../environments/environment';
 import { AuthState } from './states/auth/auth.state';
@@ -31,7 +30,6 @@ import { AuthService, S_ACCESS_TOKEN } from './services/auth.service';
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     LayoutsModule,
-    HomeModule,
   ],
   providers: [
     AuthService,

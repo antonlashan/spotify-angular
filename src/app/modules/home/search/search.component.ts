@@ -7,7 +7,8 @@ import {
   distinctUntilChanged,
   tap,
 } from 'rxjs/operators';
-import { SearchArtists } from 'src/app/states/spotify/spotify.actions';
+
+import { SearchArtists } from '../../../states/spotify/spotify.actions';
 
 @Component({
   selector: 'app-search',
@@ -26,11 +27,15 @@ export class SearchComponent implements AfterViewInit {
         debounceTime(500),
         distinctUntilChanged(),
         tap(() => {
-          this.store.dispatch(
-            new SearchArtists(this.input.nativeElement.value)
-          );
+          this.dispatch(this.input.nativeElement.value.trim());
         })
       )
       .subscribe();
+  }
+
+  private dispatch(val: string) {
+    if (val) {
+      this.store.dispatch(new SearchArtists(val));
+    }
   }
 }

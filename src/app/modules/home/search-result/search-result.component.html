@@ -1,17 +1,26 @@
-<div
-  class="d-flex flex-wrap justify-content-center"
-  *ngIf="artists$ | async as artists"
->
-  <div class="card m-1" *ngFor="let artist of artists">
-    <div class="d-flex flex-grow-1">
-      <a href="#" class="list-group-item list-group-item-action">
-        <p class="font-weight-bolder m-0">{{ artist.name }}</p>
-        <span
-          *ngFor="let genre of artist.genres"
-          class="text-info mr-1 small"
-          >{{ genre }}</span
+<ng-container *ngIf="artists$ | async as artists">
+  <div
+    class="d-flex flex-wrap justify-content-center"
+    *ngIf="artists.length > 0; else noResult"
+  >
+    <div class="card m-1" *ngFor="let artist of artists">
+      <div class="d-flex flex-grow-1">
+        <a
+          [routerLink]="['/artists', artist.id]"
+          class="list-group-item list-group-item-action"
         >
-      </a>
+          <p class="font-weight-bolder m-0">{{ artist.name }}</p>
+          <span
+            *ngFor="let genre of artist.genres"
+            class="text-info mr-1 small"
+            >{{ genre }}</span
+          >
+        </a>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>
+
+<ng-template #noResult>
+  <div class="text-center">No artists found</div>
+</ng-template>

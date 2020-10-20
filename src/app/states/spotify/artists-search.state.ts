@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
-import { SpotifyService } from 'src/app/services/spotify.service';
 
+import { SpotifyService } from '../../services/spotify.service';
 import { SearchArtists } from './spotify.actions';
 import { Artist } from './spotify.models';
 
@@ -12,7 +12,7 @@ interface ArtistsSearchStateModel {
 
 @State<ArtistsSearchStateModel>({
   name: 'search',
-  defaults: { artists: [] },
+  defaults: { artists: null },
 })
 @Injectable()
 export class ArtistsSearchState {

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { Artist } from 'src/app/states/spotify/spotify.models';
 
+import { Artist } from '../../../states/spotify/spotify.models';
 import { ArtistsSearchState } from '../../../states/spotify/artists-search.state';
 
 @Component({
@@ -10,8 +10,6 @@ import { ArtistsSearchState } from '../../../states/spotify/artists-search.state
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.scss'],
 })
-export class SearchResultComponent implements OnInit {
+export class SearchResultComponent {
   @Select(ArtistsSearchState.getArtists) artists$: Observable<Artist[]>;
-
-  ngOnInit(): void {}
 }
