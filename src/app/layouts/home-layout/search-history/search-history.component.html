@@ -1,0 +1,16 @@
+<div id="history">
+  <div class="card" *ngIf="histories$ | async as histories">
+    <div class="card-header">Search History</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li
+          class="list-group-item py-1 px-1"
+          *ngFor="let history of histories"
+          (click)="navigateAlbums(history)"
+        >
+          <a href="javascript:void" class="">{{ history.name }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

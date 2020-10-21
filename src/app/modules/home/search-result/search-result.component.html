@@ -4,11 +4,8 @@
     *ngIf="artists.length > 0; else noResult"
   >
     <div class="card m-1" *ngFor="let artist of artists">
-      <div class="d-flex flex-grow-1">
-        <a
-          [routerLink]="['/artists', artist.id]"
-          class="list-group-item list-group-item-action"
-        >
+      <div class="d-flex flex-grow-1 box" (click)="navigateAlbums(artist.id)">
+        <a class="list-group-item list-group-item-action">
           <p class="font-weight-bolder m-0">{{ artist.name }}</p>
           <span
             *ngFor="let genre of artist.genres"

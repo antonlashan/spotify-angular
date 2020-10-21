@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Action, NgxsOnInit, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
 
 import { AuthService } from '../../services/auth.service';
@@ -17,25 +17,20 @@ export class AuthStateModel {
   },
 })
 @Injectable()
-export class AuthState implements NgxsOnInit {
+export class AuthState {
   constructor(private auth: AuthService) {}
 
-  ngxsOnInit({ dispatch }: StateContext<AuthStateModel>) {
-    this.auth
-      .authorize()
-      .pipe(
-        tap((token) => {
-          dispatch(new Authenticate(token));
-        })
-      )
-      .subscribe();
+  @Selector()
+  static getToken(state: AuthStateModel) {
+    return state.token;
   }
 
   @Action(Authenticate)
-  async authStateChanged(
-    { setState }: StateContext<AuthStateModel>,
-    action: Authenticate
-  ) {
-    setState({ token: action.payload });
+  authenticate({ setState }: StateContext<AuthStateModel>) {
+    return this.auth.authorize().pipe(
+      tap((result) => {
+        setState({ token: result });
+      })
+    );
   }
 }

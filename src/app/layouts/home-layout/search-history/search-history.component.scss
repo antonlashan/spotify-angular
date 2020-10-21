@@ -1,0 +1,17 @@
+#history {
+  position: fixed;
+  width: 100%;
+  max-width: 320px;
+  max-height: calc(100vh - 65px);
+  bottom: 0;
+  right: 0px;
+  padding: 0 10px;
+  z-index: 1;
+  height: 100%;
+  .card {
+    height: 100%;
+    .card-body {
+      overflow: overlay;
+    }
+  }
+}

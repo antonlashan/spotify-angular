@@ -14,7 +14,7 @@ import { LayoutsModule } from './layouts/layouts.module';
 import { AuthInterceptor } from './intercepters/auth-interceptor';
 import { environment } from '../environments/environment';
 import { AuthState } from './states/auth/auth.state';
-import { AuthService, S_ACCESS_TOKEN } from './services/auth.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,8 +25,8 @@ import { AuthService, S_ACCESS_TOKEN } from './services/auth.service';
     NgxsModule.forRoot([AuthState], {
       developmentMode: !environment.production,
     }),
+    NgxsStoragePluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
-    NgxsStoragePluginModule.forRoot({ key: S_ACCESS_TOKEN }),
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     LayoutsModule,

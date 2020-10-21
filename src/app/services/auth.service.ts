@@ -5,8 +5,6 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { IToken } from '../states/auth/auth.model';
 
-export const S_ACCESS_TOKEN = 'auth.token.access_token';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -19,10 +17,6 @@ export class AuthHttpClient extends HttpClient {
 @Injectable()
 export class AuthService {
   constructor(private http: AuthHttpClient) {}
-
-  get accessToken(): string {
-    return JSON.parse(localStorage.getItem(S_ACCESS_TOKEN));
-  }
 
   authorize(): Observable<IToken> {
     return this.http.post<IToken>(
