@@ -1,5 +1,5 @@
-<div id="history">
-  <div class="card" *ngIf="histories$ | async as histories">
+<div id="history" *ngIf="histories$ | async as histories">
+  <div class="card" *ngIf="histories.length">
     <div class="card-header">Search History</div>
     <div class="card-body">
       <ul class="list-group list-group-flush">
