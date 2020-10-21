@@ -28,6 +28,17 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'album-details',
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./modules/album/album.module').then((m) => m.AlbumModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({

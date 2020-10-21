@@ -28,7 +28,7 @@ export class ArtistAlbumsState {
     { setState }: StateContext<ArtistAlbumsStateModel>,
     { id }: GetArtistAlbums
   ) {
-    return this.spotify.getAlbums(id).pipe(
+    return this.spotify.getAlbumsByArtist(id).pipe(
       tap((result) => {
         setState({
           albums: result.items,

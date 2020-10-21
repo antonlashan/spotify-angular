@@ -60,3 +60,20 @@ export interface ArtistAlbum {
 }
 
 export type ArtistAlbums = Paging<ArtistAlbum[]>;
+
+export interface Track {
+  id: string;
+  name: string;
+  preview_url: string | null;
+}
+
+export interface Album {
+  artists: Artist[];
+  id: string;
+  images: ArtistImage[];
+  label: string;
+  name: string;
+  release_date: string;
+  total_tracks: number;
+  tracks: Paging<Track[]>;
+}
