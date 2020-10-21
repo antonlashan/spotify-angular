@@ -20,6 +20,7 @@ const routes: Routes = [
   {
     path: 'artists',
     component: MainLayoutComponent,
+    data: { title: 'Artists Page' },
     children: [
       {
         path: '',
@@ -31,6 +32,7 @@ const routes: Routes = [
   {
     path: 'album-details',
     component: MainLayoutComponent,
+    data: { title: 'Album details' },
     children: [
       {
         path: '',

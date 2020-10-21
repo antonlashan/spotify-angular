@@ -22,8 +22,4 @@ export class AlbumsComponent implements OnChanges {
       this.store.dispatch(new GetArtistAlbums(this.artistId));
     }
   }
-
-  back() {
-    history.back();
-  }
 }

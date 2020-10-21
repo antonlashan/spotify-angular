@@ -1,4 +1,8 @@
 <app-header></app-header>
 <main role="main" class="container-xl">
+  <h3 class="mb-3 text-center">{{ title }}</h3>
+  <div class="text-center mb-3">
+    <button class="btn btn-secondary" (click)="back()">Go Back</button>
+  </div>
   <router-outlet></router-outlet>
 </main>
