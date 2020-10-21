@@ -1,6 +1,15 @@
-<div id="history" *ngIf="histories$ | async as histories">
+<div
+  id="history"
+  *ngIf="histories$ | async as histories"
+  [ngClass]="{ open: open }"
+>
   <div class="card" *ngIf="histories.length">
-    <div class="card-header">Search History</div>
+    <div
+      class="card-header d-flex justify-content-between align-items-center"
+      (click)="toggleWidget()"
+    >
+      <span>Search History</span> <span class="mininize"></span>
+    </div>
     <div class="card-body">
       <ul class="list-group list-group-flush">
         <li

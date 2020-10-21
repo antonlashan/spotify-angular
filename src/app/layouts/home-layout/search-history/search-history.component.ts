@@ -13,10 +13,15 @@ import { HistoryState } from '../../../states/history/history.state';
 })
 export class SearchHistoryComponent {
   @Select(HistoryState.getHistories) histories$: Observable<History[]>;
+  open = false;
 
   constructor(private store: Store) {}
 
   navigateAlbums(history: History) {
     this.store.dispatch(new AddHistory(history));
+  }
+
+  toggleWidget() {
+    this.open = !this.open;
   }
 }
